@@ -782,3 +782,60 @@ textarea {
   height: 100%;
   object-fit: cover;                    /* fills nicely for screenshots */
 }
+
+.device {
+  position: relative;
+  width: min(950px, 100%);
+  margin: 2rem auto;
+  line-height: 0;
+}
+
+/* Frame (unchanged) */
+.device__frame {
+  width: 100%;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* 🔧 Adjust video proportions */
+.device {
+  --screen-left: 13.5%;     /* shift inward a bit */
+  --screen-top: 8%;      /* move slightly down */
+  --screen-width: 73%;    /* narrower */
+  --screen-height: 80%;   /* shorter */
+  --screen-radius: 8px;   /* optional: more roundness for aesthetic */
+}
+
+/* Video */
+.device__screen {
+  position: absolute;
+  left: var(--screen-left);
+  top: var(--screen-top);
+  width: var(--screen-width);
+  height: var(--screen-height);
+  object-fit: contain;   /* ⬅ shows the entire video without cropping */
+  background: #000;      /* fills the letterbox/pillarbox space */
+  border-radius: var(--screen-radius);
+}
+
+
+
+/* Optional fullscreen button (some browsers hide native FS on inline video) */
+.device__fullscreen {
+  position: absolute;
+  right: calc(var(--screen-left) + 0.5rem);
+  bottom: calc(var(--screen-top) + 0.5rem);
+  z-index: 2;
+  padding: .4rem .6rem;
+  border: 0;
+  border-radius: .5rem;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.device__fullscreen:hover {
+  background: rgba(0,0,0,.75);
+}
