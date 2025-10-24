@@ -839,3 +839,44 @@ textarea {
 .device__fullscreen:hover {
   background: rgba(0,0,0,.75);
 }
+
+/* Gallery wrap */
+.api-docs-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 10px;
+  max-width: 950px;
+  margin: 1rem auto 2rem;
+  align-items: center;
+}
+
+/* Thumbnails */
+.api-docs-thumb {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: transform .15s ease, opacity .15s ease, box-shadow .15s ease;
+  background: #111;
+}
+
+.api-docs-thumb:hover {
+  transform: translateY(-2px);
+  opacity: 1;
+  box-shadow: 0 6px 18px rgba(0,0,0,.15);
+}
+
+.api-docs-thumb--active {
+  outline: 2px solid #4f46e5; /* accent highlight */
+  opacity: 1;
+}
+
+/* Keep your existing .device / .device__screen rules.
+   Ensure object-fit works nicely for screenshots: */
+.device__screen {
+  object-fit: contain; /* so the whole screenshot is visible */
+  background: #000;
+}
+
